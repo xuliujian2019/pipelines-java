@@ -21,8 +21,6 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: PowerShell@2
+- task: DownloadSecureFile@1
   inputs:
-    targetType: 'inline'
-    script: 'New-Item -Type Directory -Force "${HOME}/.m2"
-            Copy-Item -Force "$(settingsxml.secureFilePath)" "${HOME}/.m2/settings.xml"'
+    secureFile: 'settings.xml'
