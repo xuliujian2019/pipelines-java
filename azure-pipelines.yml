@@ -6,16 +6,6 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
-- task: PowerShell@1
-  inputs:
-    targetType: 'inline'
-    script: '# Write your powershell commands here.
-      New-Item -Type Directory -Force "${HOME}/.m2"
-      Copy-Item -Force "$(settingsxml.secureFilePath)" "${HOME}/.m2/settings.xml"
-
-- task: DownloadSecureFile@2
-  inputs:
-    secureFile: "$(settingsxml.secureFilePath)"
     
 - task: Maven@3
   inputs:
