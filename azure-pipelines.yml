@@ -21,7 +21,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: PowerShell@2
+- task: PowerShell@1
   inputs:
     targetType: 'inline'
     script: '# Write your powershell commands here.
@@ -36,6 +36,6 @@ steps:
 
 # Download Secure File
 # Download a secure file to a temporary location on the build or release agent
-- task: DownloadSecureFile@1
+- task: DownloadSecureFile@2
   inputs:
     secureFile: "$(settingsxml.secureFilePath)"
