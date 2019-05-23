@@ -24,14 +24,4 @@ steps:
     publishJUnitResults: false
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-# Download Secure File
-# Download a secure file to a temporary location on the build or release agent
-- powershell: |
-    New-Item -Type Directory -Force "${HOME}/.m2"
-    Copy-Item -Force "$(settingsxml.secureFilePath)" "${HOME}/.m2/settings.xml"
-  condition: eq( variables['Agent.OS'], 'Windows_NT' )
-  displayName: Get IP on Windows
-  
-- task: DownloadSecureFile@1
-  inputs:
-    secureFile:"$(settingsxml.secureFilePath)"
+
