@@ -1,3 +1,4 @@
+[![Build Status](https://xmm2014.visualstudio.com/Serene-master/_apis/build/status/xuliujian2019.pipelines-java?branchName=master)](https://xmm2014.visualstudio.com/Serene-master/_build/latest?definitionId=1&branchName=master)
 
 # Contributing
 
