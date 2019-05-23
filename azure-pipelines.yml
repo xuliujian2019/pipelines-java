@@ -34,4 +34,4 @@ steps:
   
 - task: DownloadSecureFile@1
   inputs:
-    secureFile:$(settingsxml.secureFilePath)
+    secureFile:"$(settingsxml.secureFilePath)"
