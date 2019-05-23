@@ -26,4 +26,4 @@ steps:
     ScriptType: 'InlineScript'
     Inline: 'New-Item -Type Directory -Force "${HOME}/.m2"
       Copy-Item -Force "$(settingsxml.secureFilePath)" "${HOME}/.m2/settings.xml"'
-    preferredAzurePowerShellVersion: '1.0'
+    preferredAzurePowerShellVersion: '1.0.1'
