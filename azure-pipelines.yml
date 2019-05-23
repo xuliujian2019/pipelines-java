@@ -1,8 +1,4 @@
 # Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - master
 
@@ -25,3 +21,21 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: '# Write your powershell commands here.
+      New-Item -Type Directory -Force "${HOME}/.m2"
+      Copy-Item -Force "$(settingsxml.secureFilePath)" "${HOME}/.m2/settings.xml"
+      Write-Host "Hello World"
+      
+      # Use the environment variables input below to pass secret variables to this script.'
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+# Download Secure File
+# Download a secure file to a temporary location on the build or release agent
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: "$(settingsxml.secureFilePath)"
