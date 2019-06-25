@@ -30,3 +30,14 @@ steps:
     targetType: 'inline'
     script: 'New-Item -Type Directory -Force "${HOME}/.m2"
       Copy-Item -Force "$env:DOWNLOADSECUREFILE_SECUREFILEPATH" "${HOME}/.m2/settings.xml"'
+      
+- task: Gradle@2
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: true
+    sqGradlePluginVersionChoice: 'specify'
+    sonarQubeGradlePluginVersion: '2.6.1'
