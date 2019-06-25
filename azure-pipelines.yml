@@ -7,29 +7,9 @@ pool:
 
 steps:
     
-- task: Maven@3
-  inputs:
-    codeCoverageTool: "JaCoCo"
-    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
-    reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
-    failIfCoverageEmpty: true  
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: false
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
 - task: DownloadSecureFile@1
   inputs:
     secureFile: 'settings.xml'
-  
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'New-Item -Type Directory -Force "${HOME}/.m2"
-      Copy-Item -Force "$env:DOWNLOADSECUREFILE_SECUREFILEPATH" "${HOME}/.m2/settings.xml"'
       
 - task: Gradle@2
   inputs:
